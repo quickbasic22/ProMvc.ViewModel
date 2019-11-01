@@ -52,12 +52,25 @@ namespace ProMvc5.ViewModel.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public ActionResult AllUsers()
+        {
+            
+            var users = UserManager.Users;
+            //var user = users.Where(a => a.LastName == "Morrow");
+           
+            return View(users);
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            //var users = UserManager.Users;
+            //var user = users.Where(a => a.LastName == "Morrow");
+           
             return View();
         }
 
@@ -151,7 +164,7 @@ namespace ProMvc5.ViewModel.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Age = model.Age};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

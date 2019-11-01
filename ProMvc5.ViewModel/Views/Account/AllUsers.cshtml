@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProMvc5.ViewModel.Models.ApplicationUser>
+@{
+    ViewBag.Title = "AllUsers";
+}
+
+<h2>AllUsers</h2>
+
+@if (Model.Any())
+{
+      
+
+    foreach (var user in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id: @user.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@user.UserName</h5>
+                <h5 class="card-title">@user.LastName</h5>
+                <h5 class="card-title">@user.FirstName</h5>
+                <h5 class="card-title">@user.Age</h5>
+            </div>
+            <div class="card-footer">
+                @Html.ActionLink("Edit", "Edit", "ApplicationUser", new { id = user.Id }, htmlAttributes: new { @class = "btn btn-primary" } )
+                @Html.ActionLink("Delete", "Delete", "ApplicationUser", new { id = user.Id }, htmlAttributes: new { @class = "btn btn-primary" } )
+            </div>
+        </div>
+
+    }
+
+
+
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a user
+            </h5>
+            @Html.ActionLink("Create", "Create", new { Area = "" }, htmlAttributes: new { @class = "btn btn-primary" } )
+        </div>
+    </div>
+}

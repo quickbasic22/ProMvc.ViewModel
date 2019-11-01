@@ -1,0 +1,22 @@
+﻿@model List<ProMvc5.ViewModel.Models.Product>
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details view with partials</title>
+</head>
+<body>
+
+    <div>
+        @foreach (var item in Model)
+        {
+         <h2>item.Title</h2>  
+         <h4>item.Price</h4>   
+        }
+    </div>
+</body>
+</html>

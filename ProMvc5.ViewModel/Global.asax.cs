@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using ProMvc5.ViewModel.Models;
 
 namespace ProMvc5.ViewModel
 {
@@ -12,6 +14,7 @@ namespace ProMvc5.ViewModel
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
